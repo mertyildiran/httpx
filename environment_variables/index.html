@@ -1,0 +1,788 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A next-generation HTTP client for Python.">
+      
+      
+      
+      
+        <link rel="canonical" href="https://www.python-httpx.org/environment_variables/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+    
+    
+      
+        <title>Environment Variables - HTTPX</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e35208c4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#environment-variables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="HTTPX" class="md-header__button md-logo" aria-label="HTTPX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HTTPX
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Environment Variables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/encode/httpx/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    encode/httpx
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HTTPX" class="md-nav__button md-logo" aria-label="HTTPX" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    HTTPX
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/encode/httpx/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    encode/httpx
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        QuickStart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/" class="md-nav__link">
+        Advanced Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../async/" class="md-nav__link">
+        Async Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http2/" class="md-nav__link">
+        HTTP/2 Support
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Environment Variables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Environment Variables
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#httpx_log_level" class="md-nav__link">
+    HTTPX_LOG_LEVEL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sslkeylogfile" class="md-nav__link">
+    SSLKEYLOGFILE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl_cert_file" class="md-nav__link">
+    SSL_CERT_FILE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl_cert_dir" class="md-nav__link">
+    SSL_CERT_DIR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxies" class="md-nav__link">
+    Proxies
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http_proxy-https_proxy-all_proxy" class="md-nav__link">
+    HTTP_PROXY, HTTPS_PROXY, ALL_PROXY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no_proxy" class="md-nav__link">
+    NO_PROXY
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compatibility/" class="md-nav__link">
+        Requests Compatibility
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        Developer Interface
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../third_party_packages/" class="md-nav__link">
+        Third Party Packages
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_of_conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#httpx_log_level" class="md-nav__link">
+    HTTPX_LOG_LEVEL
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sslkeylogfile" class="md-nav__link">
+    SSLKEYLOGFILE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl_cert_file" class="md-nav__link">
+    SSL_CERT_FILE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl_cert_dir" class="md-nav__link">
+    SSL_CERT_DIR
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxies" class="md-nav__link">
+    Proxies
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http_proxy-https_proxy-all_proxy" class="md-nav__link">
+    HTTP_PROXY, HTTPS_PROXY, ALL_PROXY
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no_proxy" class="md-nav__link">
+    NO_PROXY
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="environment-variables">Environment Variables</h1>
+<p>The HTTPX library can be configured via environment variables.
+Environment variables are used by default. To ignore environment variables, <code>trust_env</code> has to be set <code>False</code>. There are two ways to set <code>trust_env</code> to disable environment variables:</p>
+<ul>
+<li>On the client via <code>httpx.Client(trust_env=False)</code>.</li>
+<li>Using the top-level API, such as <code>httpx.get("&lt;url&gt;", trust_env=False)</code>.</li>
+</ul>
+<p>Here is a list of environment variables that HTTPX recognizes and what function they serve:</p>
+<h2 id="httpx_log_level"><code>HTTPX_LOG_LEVEL</code></h2>
+<p>Valid values: <code>debug</code>, <code>trace</code> (case-insensitive)</p>
+<p>If set to <code>debug</code>, then HTTP requests will be logged to <code>stderr</code>. This is useful for general purpose reporting of network activity.</p>
+<p>If set to <code>trace</code>, then low-level details about the execution of HTTP requests will be logged to <code>stderr</code>, in addition to debug log lines. This can help you debug issues and see what's exactly being sent over the wire and to which location.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># test_script.py</span>
+<span class="kn">import</span> <span class="nn">httpx</span>
+
+<span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://google.com&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Debug output:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nv">HTTPX_LOG_LEVEL</span><span class="o">=</span>debug python test_script.py
+<span class="go">DEBUG [2019-11-06 19:11:24] httpx._client - HTTP Request: GET https://google.com &quot;HTTP/1.1 301 Moved Permanently&quot;</span>
+<span class="go">DEBUG [2019-11-06 19:11:24] httpx._client - HTTP Request: GET https://www.google.com/ &quot;HTTP/1.1 200 OK&quot;</span>
+</code></pre></div>
+
+<p>Trace output:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nv">HTTPX_LOG_LEVEL</span><span class="o">=</span>trace python test_script.py
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection_pool - acquire_connection origin=Origin(scheme=&#39;https&#39; host=&#39;google.com&#39; port=443)</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection_pool - new_connection connection=HTTPConnection(origin=Origin(scheme=&#39;https&#39; host=&#39;google.com&#39; port=443))</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._config - load_ssl_context verify=True cert=None trust_env=True http_versions=HTTPVersionConfig([&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;])</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._config - load_verify_locations cafile=/Users/florimond/Developer/python-projects/httpx/venv/lib/python3.8/site-packages/certifi/cacert.pem</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection - start_connect host=&#39;google.com&#39; port=443 timeout=Timeout(timeout=5.0)</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection - connected http_version=&#39;HTTP/2&#39;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - send_headers stream_id=1 method=&#39;GET&#39; target=&#39;/&#39; headers=[(b&#39;:method&#39;, b&#39;GET&#39;), (b&#39;:authority&#39;, b&#39;google.com&#39;), (b&#39;:scheme&#39;, b&#39;https&#39;), (b&#39;:path&#39;, b&#39;/&#39;), (b&#39;user-agent&#39;, b&#39;python-httpx/0.7.6&#39;), (b&#39;accept&#39;, b&#39;*/*&#39;), (b&#39;accept-encoding&#39;, b&#39;gzip, deflate, br&#39;), (b&#39;connection&#39;, b&#39;keep-alive&#39;)]</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - end_stream stream_id=1</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;RemoteSettingsChanged changed_settings:{ChangedSetting(setting=SettingCodes.MAX_CONCURRENT_STREAMS, original_value=None, new_value=100), ChangedSetting(setting=SettingCodes.INITIAL_WINDOW_SIZE, original_value=65535, new_value=1048576), ChangedSetting(setting=SettingCodes.MAX_HEADER_LIST_SIZE, original_value=None, new_value=16384)}&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;WindowUpdated stream_id:0, delta:983041&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;SettingsAcknowledged changed_settings:{}&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=1 event=&lt;ResponseReceived stream_id:1, headers:[(b&#39;:status&#39;, b&#39;301&#39;), (b&#39;location&#39;, b&#39;https://www.google.com/&#39;), (b&#39;content-type&#39;, b&#39;text/html; charset=UTF-8&#39;), (b&#39;date&#39;, b&#39;Wed, 06 Nov 2019 18:18:56 GMT&#39;), (b&#39;expires&#39;, b&#39;Fri, 06 Dec 2019 18:18:56 GMT&#39;), (b&#39;cache-control&#39;, b&#39;public, max-age=2592000&#39;), (b&#39;server&#39;, b&#39;gws&#39;), (b&#39;content-length&#39;, b&#39;220&#39;), (b&#39;x-xss-protection&#39;, b&#39;0&#39;), (b&#39;x-frame-options&#39;, b&#39;SAMEORIGIN&#39;), (b&#39;alt-svc&#39;, b&#39;quic=&quot;:443&quot;; ma=2592000; v=&quot;46,43&quot;,h3-Q050=&quot;:443&quot;; ma=2592000,h3-Q049=&quot;:443&quot;; ma=2592000,h3-Q048=&quot;:443&quot;; ma=2592000,h3-Q046=&quot;:443&quot;; ma=2592000,h3-Q043=&quot;:443&quot;; ma=2592000&#39;)]&gt;</span>
+<span class="go">DEBUG [2019-11-06 19:18:56] httpx._client - HTTP Request: GET https://google.com &quot;HTTP/2 301 Moved Permanently&quot;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection_pool - acquire_connection origin=Origin(scheme=&#39;https&#39; host=&#39;www.google.com&#39; port=443)</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection_pool - new_connection connection=HTTPConnection(origin=Origin(scheme=&#39;https&#39; host=&#39;www.google.com&#39; port=443))</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._config - load_ssl_context verify=True cert=None trust_env=True http_versions=HTTPVersionConfig([&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;])</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._config - load_verify_locations cafile=/Users/florimond/Developer/python-projects/httpx/venv/lib/python3.8/site-packages/certifi/cacert.pem</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection - start_connect host=&#39;www.google.com&#39; port=443 timeout=Timeout(timeout=5.0)</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection - connected http_version=&#39;HTTP/2&#39;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - send_headers stream_id=1 method=&#39;GET&#39; target=&#39;/&#39; headers=[(b&#39;:method&#39;, b&#39;GET&#39;), (b&#39;:authority&#39;, b&#39;www.google.com&#39;), (b&#39;:scheme&#39;, b&#39;https&#39;), (b&#39;:path&#39;, b&#39;/&#39;), (b&#39;user-agent&#39;, b&#39;python-httpx/0.7.6&#39;), (b&#39;accept&#39;, b&#39;*/*&#39;), (b&#39;accept-encoding&#39;, b&#39;gzip, deflate, br&#39;), (b&#39;connection&#39;, b&#39;keep-alive&#39;)]</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - end_stream stream_id=1</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;RemoteSettingsChanged changed_settings:{ChangedSetting(setting=SettingCodes.MAX_CONCURRENT_STREAMS, original_value=None, new_value=100), ChangedSetting(setting=SettingCodes.INITIAL_WINDOW_SIZE, original_value=65535, new_value=1048576), ChangedSetting(setting=SettingCodes.MAX_HEADER_LIST_SIZE, original_value=None, new_value=16384)}&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;WindowUpdated stream_id:0, delta:983041&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;SettingsAcknowledged changed_settings:{}&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=1 event=&lt;ResponseReceived stream_id:1, headers:[(b&#39;:status&#39;, b&#39;200&#39;), (b&#39;date&#39;, b&#39;Wed, 06 Nov 2019 18:18:56 GMT&#39;), (b&#39;expires&#39;, b&#39;-1&#39;), (b&#39;cache-control&#39;, b&#39;private, max-age=0&#39;), (b&#39;content-type&#39;, b&#39;text/html; charset=ISO-8859-1&#39;), (b&#39;p3p&#39;, b&#39;CP=&quot;This is not a P3P policy! See g.co/p3phelp for more info.&quot;&#39;), (b&#39;content-encoding&#39;, b&#39;gzip&#39;), (b&#39;server&#39;, b&#39;gws&#39;), (b&#39;content-length&#39;, b&#39;5073&#39;), (b&#39;x-xss-protection&#39;, b&#39;0&#39;), (b&#39;x-frame-options&#39;, b&#39;SAMEORIGIN&#39;), (b&#39;set-cookie&#39;, b&#39;1P_JAR=2019-11-06-18; expires=Fri, 06-Dec-2019 18:18:56 GMT; path=/; domain=.google.com; SameSite=none&#39;), (b&#39;set-cookie&#39;, b&#39;NID=190=m8G9qLxCz2_4HbZI02ON2HTJF4xTvOhoJiS57Hm-OJrNS2eY20LfXMR_u-mLjujeshW5-BTezI69OGpHksT4ZK2TCDsWeU0DF7AmDTjjXFOdj30eIUTpNq7r9aWRvI8UrqiwlIsLkE8Ee3t5PiIiVdSMUcji7dkavGlMUpkMXU8; expires=Thu, 07-May-2020 18:18:56 GMT; path=/; domain=.google.com; HttpOnly&#39;), (b&#39;alt-svc&#39;, b&#39;quic=&quot;:443&quot;; ma=2592000; v=&quot;46,43&quot;,h3-Q050=&quot;:443&quot;; ma=2592000,h3-Q049=&quot;:443&quot;; ma=2592000,h3-Q048=&quot;:443&quot;; ma=2592000,h3-Q046=&quot;:443&quot;; ma=2592000,h3-Q043=&quot;:443&quot;; ma=2592000&#39;)]&gt;</span>
+<span class="go">DEBUG [2019-11-06 19:18:56] httpx._client - HTTP Request: GET https://www.google.com/ &quot;HTTP/2 200 OK&quot;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=1 event=&lt;DataReceived stream_id:1, flow_controlled_length:5186, data:1f8b08000000000002ffc55af97adb4692ff3f4f&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=1 event=&lt;DataReceived stream_id:1, flow_controlled_length:221, data:&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=1 event=&lt;StreamEnded stream_id:1&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.http2 - receive_event stream_id=0 event=&lt;PingReceived ping_data:0000000000000000&gt;</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection_pool - release_connection connection=HTTPConnection(origin=Origin(scheme=&#39;https&#39; host=&#39;www.google.com&#39; port=443))</span>
+<span class="go">TRACE [2019-11-06 19:18:56] httpx._dispatch.connection - close_connection</span>
+</code></pre></div>
+
+<h2 id="sslkeylogfile"><code>SSLKEYLOGFILE</code></h2>
+<p>Valid values: a filename</p>
+<p>If this environment variable is set, TLS keys will be appended to the specified file, creating it if it doesn't exist, whenever key material is generated or received. The keylog file is designed for debugging purposes only.</p>
+<p>Support for <code>SSLKEYLOGFILE</code> requires Python 3.8 and OpenSSL 1.1.1 or newer.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># test_script.py</span>
+<span class="kn">import</span> <span class="nn">httpx</span>
+
+<span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://google.com&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="go">SSLKEYLOGFILE=test.log python test_script.py</span>
+<span class="go">cat test.log</span>
+<span class="gp"># </span>TLS secrets log file, generated by OpenSSL / Python
+<span class="go">SERVER_HANDSHAKE_TRAFFIC_SECRET XXXX</span>
+<span class="go">EXPORTER_SECRET XXXX</span>
+<span class="go">SERVER_TRAFFIC_SECRET_0 XXXX</span>
+<span class="go">CLIENT_HANDSHAKE_TRAFFIC_SECRET XXXX</span>
+<span class="go">CLIENT_TRAFFIC_SECRET_0 XXXX</span>
+<span class="go">SERVER_HANDSHAKE_TRAFFIC_SECRET XXXX</span>
+<span class="go">EXPORTER_SECRET XXXX</span>
+<span class="go">SERVER_TRAFFIC_SECRET_0 XXXX</span>
+<span class="go">CLIENT_HANDSHAKE_TRAFFIC_SECRET XXXX</span>
+<span class="go">CLIENT_TRAFFIC_SECRET_0 XXXX</span>
+</code></pre></div>
+
+<h2 id="ssl_cert_file"><code>SSL_CERT_FILE</code></h2>
+<p>Valid values: a filename</p>
+<p>If this environment variable is set then HTTPX will load
+CA certificate from the specified file instead of the default
+location.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="go">SSL_CERT_FILE=/path/to/ca-certs/ca-bundle.crt python -c &quot;import httpx; httpx.get(&#39;https://example.com&#39;)&quot;</span>
+</code></pre></div>
+
+<h2 id="ssl_cert_dir"><code>SSL_CERT_DIR</code></h2>
+<p>Valid values: a directory following an <a href="https://www.openssl.org/docs/manmaster/man3/SSL_CTX_load_verify_locations.html">OpenSSL specific layout</a>.</p>
+<p>If this environment variable is set and the directory follows an <a href="https://www.openssl.org/docs/manmaster/man3/SSL_CTX_load_verify_locations.html">OpenSSL specific layout</a> (ie. you ran <code>c_rehash</code>) then HTTPX will load CA certificates from this directory instead of the default location.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="go">SSL_CERT_DIR=/path/to/ca-certs/ python -c &quot;import httpx; httpx.get(&#39;https://example.com&#39;)&quot;</span>
+</code></pre></div>
+
+<h2 id="proxies">Proxies</h2>
+<p>The environment variables documented below are used as a convention by various HTTP tooling, including:</p>
+<ul>
+<li><a href="https://github.com/curl/curl/blob/master/docs/MANUAL.md#environment-variables">cURL</a></li>
+<li><a href="https://github.com/psf/requests/blob/master/docs/user/advanced.rst#proxies">requests</a></li>
+</ul>
+<p>For more information on using proxies in HTTPX, see <a href="../advanced/#http-proxying">HTTP Proxying</a>.</p>
+<h3 id="http_proxy-https_proxy-all_proxy"><code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>, <code>ALL_PROXY</code></h3>
+<p>Valid values: A URL to a proxy</p>
+<p><code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>, <code>ALL_PROXY</code> set the proxy to be used for <code>http</code>, <code>https</code>, or all requests respectively.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">HTTP_PROXY</span><span class="o">=</span>http://my-external-proxy.com:1234
+
+<span class="c1"># This request will be sent through the proxy</span>
+python -c <span class="s2">&quot;import httpx; httpx.get(&#39;http://example.com&#39;)&quot;</span>
+
+<span class="c1"># This request will be sent directly, as we set `trust_env=False`</span>
+python -c <span class="s2">&quot;import httpx; httpx.get(&#39;http://example.com&#39;, trust_env=False)&quot;</span>
+</code></pre></div>
+
+<h3 id="no_proxy"><code>NO_PROXY</code></h3>
+<p>Valid values: a comma-separated list of hostnames/urls</p>
+<p><code>NO_PROXY</code> disables the proxy for specific urls</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">HTTP_PROXY</span><span class="o">=</span>http://my-external-proxy.com:1234
+<span class="nb">export</span> <span class="nv">NO_PROXY</span><span class="o">=</span>http://127.0.0.1,python-httpx.org
+
+<span class="c1"># As in the previous example, this request will be sent through the proxy</span>
+python -c <span class="s2">&quot;import httpx; httpx.get(&#39;http://example.com&#39;)&quot;</span>
+
+<span class="c1"># These requests will be sent directly, bypassing the proxy</span>
+python -c <span class="s2">&quot;import httpx; httpx.get(&#39;http://127.0.0.1:5000/my-api&#39;)&quot;</span>
+python -c <span class="s2">&quot;import httpx; httpx.get(&#39;https://www.python-httpx.org&#39;)&quot;</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../http2/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              HTTP/2 Support
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../compatibility/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Requests Compatibility
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="../js/chat.js"></script>
+      
+        <script src="../js/sidecar-1.5.0.js"></script>
+      
+    
+  </body>
+</html>
